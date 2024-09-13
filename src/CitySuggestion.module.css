@@ -1,5 +1,5 @@
 .app {
-  display: flex;
+ 
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -7,20 +7,22 @@
 
 .container {
  position: relative;
-  width: 300px;
+  width: 400px;
+  margin: auto;
 }
 
 input {
   position: relative;
   padding: 10px;
-  font-size: 16px;
-  width: 300px;
+  font-size: 20px;
+  width: 400px;
   position: relative;
   z-index: 1;
   border: none;
   background-color: transparent;
   border-bottom: 2px solid #ccc;
-  letter-spacing:1.5px;
+  letter-spacing:1.9px;
+  margin-top: 300px;
 }
 .underline {
   position: absolute;
@@ -30,10 +32,11 @@ input {
   height: 2px;
   background-color: #007BFF;
   transition: width 0.4s ease;
+  z-index: 2;
 }
 
 input:focus ~ .underline {
-  width: 100%;
+  width: 400px;
 }
 input:focus {  
   outline: none;
@@ -41,10 +44,15 @@ input:focus {
 
 .suggestion {
   position: absolute;
-  top: 7px;
+  top: 307px;
   left: 10.5px;
   color: #afafaf;
   pointer-events: none;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
+  font-size: 20px;
 }
 
+.coordinates {
+  margin: auto;
+  width: 400px;
+}
