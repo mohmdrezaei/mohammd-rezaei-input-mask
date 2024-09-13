@@ -1,14 +1,12 @@
 .app {
- 
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
 .container {
- position: relative;
+  position: relative;
   width: 400px;
   margin: auto;
+  margin-top: 300px;
 }
 
 input {
@@ -21,9 +19,10 @@ input {
   border: none;
   background-color: transparent;
   border-bottom: 2px solid #ccc;
-  letter-spacing:1.9px;
-  margin-top: 300px;
+  letter-spacing: 1.9px;
+ 
 }
+
 .underline {
   position: absolute;
   bottom: 0;
@@ -35,16 +34,17 @@ input {
   z-index: 2;
 }
 
-input:focus ~ .underline {
+input:focus~.underline {
   width: 400px;
 }
-input:focus {  
+
+input:focus {
   outline: none;
 }
 
 .suggestion {
   position: absolute;
-  top: 307px;
+  top: 7px;
   left: 10.5px;
   color: #afafaf;
   pointer-events: none;
@@ -54,5 +54,24 @@ input:focus {
 
 .coordinates {
   margin: auto;
-  width: 400px;
+  width: 500px;
+  margin-top: 30px;
+  padding: 30px;
+  height: 200px;
+  background-color: #d7d5ff;
+  text-align: center;
+  border: 1px solid #75b8fe;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.coordinates p {
+  margin: 20px 0;
+  margin-right: 10px;
+}
+.coordinates span {
+     
+  color: #0b15cc;
+  padding: 5px 10px;
+  margin: 30px;
 }

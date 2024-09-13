@@ -24,6 +24,7 @@ function CitySuggesstion() {
     if (enterPressed && suggestion) {
       fetchCoordinates(suggestion);
       setEnterPressed(false);
+      setSuggestion("");
     }
   }, [inputValue]);
 
@@ -39,9 +40,9 @@ function CitySuggesstion() {
       setInputValue("");
       setSuggestion("");
       setCoordinates(null);
-    } 
+    }
   };
- 
+
   const fetchCoordinates = async (city) => {
     try {
       const res = await fetch(`${BASE_URL}/json?q=${city}&key=${API_KEY}`);
@@ -49,11 +50,9 @@ function CitySuggesstion() {
       if (json.results.length > 0) {
         const { lat, lng } = json.results[0].geometry;
         setCoordinates({ lat, lng });
-        
       } else {
         setCoordinates(null);
       }
-      
     } catch (error) {
       console.error("Error fetching coordinates:", error);
       setCoordinates(null);
@@ -77,13 +76,17 @@ function CitySuggesstion() {
             {suggestion.slice(inputValue.length)}
           </div>
         )}
-        
       </div>
-      {coordinates && (
-          <div className={styles.coordinates}>
-            Latitude: {coordinates.lat}, Longitude: {coordinates.lng}
-          </div>
-        )}
+      
+        <div className={styles.coordinates}>
+        {coordinates && (
+          <>
+          <p>Latitude <span>{coordinates.lat}</span> </p>
+          <p>Longitude<span>{coordinates.lng}</span></p>
+          </>
+         )}
+        </div>
+      
     </div>
   );
 }
