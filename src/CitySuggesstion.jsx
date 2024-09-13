@@ -39,9 +39,9 @@ function CitySuggesstion() {
       setInputValue("");
       setSuggestion("");
       setCoordinates(null);
-    }
+    } 
   };
-
+ 
   const fetchCoordinates = async (city) => {
     try {
       const res = await fetch(`${BASE_URL}/json?q=${city}&key=${API_KEY}`);
