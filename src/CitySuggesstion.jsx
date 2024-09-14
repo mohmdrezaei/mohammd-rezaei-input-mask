@@ -10,9 +10,9 @@ function CitySuggesstion() {
   const [suggestion, setSuggestion] = useState("");
   const [enterPressed, setEnterPressed] = useState(false);
   const [coordinates, setCoordinates] = useState(null);
-  const [isLoading , setIsLoading] =useState(false)
-  const [error , setError] = useState(null)
- 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     if (
       inputValue &&
@@ -62,7 +62,7 @@ function CitySuggesstion() {
       console.error("Error fetching coordinates:", error);
       setCoordinates(null);
       setError(error.message);
-    } finally{
+    } finally {
       setIsLoading(false);
     }
   };
@@ -70,14 +70,19 @@ function CitySuggesstion() {
   return (
     <div className={styles.app}>
       <div className={styles.container}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          placeholder="Enter city name"
-        />
-        <div className={styles.underline}></div>
+        <div className={styles.formGroup}>
+          <input
+            type="text"
+            className={styles.formField}
+            placeholder="Enter city name"
+            value={inputValue}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <label for="name" className={styles.formLabel}>
+          Enter city name
+          </label>
+        </div>
         {suggestion && (
           <div className={styles.suggestion}>
             {inputValue}
@@ -89,9 +94,14 @@ function CitySuggesstion() {
       <div className={styles.coordinates}>
         <h4>Geographic coordinates</h4>
         {isLoading && (
-          <ThreeDots color="#4f56e7" wrapperClass={styles.flex}   width={60} height={60}/>
+          <ThreeDots
+            color="#38caef"
+            wrapperClass={styles.flex}
+            width={60}
+            height={60}
+          />
         )}
-         {error && <p className={styles.error}>{error}</p>}
+        {error && <p className={styles.error}>{error}</p>}
         {coordinates && (
           <>
             <p>

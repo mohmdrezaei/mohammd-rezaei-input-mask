@@ -4,50 +4,78 @@
 
 .container {
   position: relative;
-  width: 400px;
+  width: 500px;
   margin: auto;
   margin-top: 200px;
+  cursor: pointer;
 }
 
-input {
+.formGroup {
   position: relative;
-  padding: 10px;
-  font-size: 20px;
+  padding: 20px 0 0;
   width: 100%;
+}
+
+.formField {
   position: relative;
-  z-index: 1;
+  width: 100%;
   border: none;
-  background-color: transparent;
-  border-bottom: 2px solid #ccc;
-  letter-spacing: 1.9px;
- 
-}
-
-.underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #007BFF;
-  transition: width 0.4s ease;
-  z-index: 2;
-}
-
-input:focus~.underline {
-  width: 400px;
-}
-
-input:focus {
+  border-bottom: 2px solid #9b9b9b;
   outline: none;
+  font-size: 20px;
+  z-index: 1;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.8s;
+  letter-spacing: 1.9px;
 }
 
+.formField::placeholder {
+  color: transparent;
+}
+
+.formField:placeholder-shown ~ .formLabel {
+  font-size: 17px;
+  cursor: text;
+  top: 20px;
+}
+
+.formLabel {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.3s all;
+  font-size: 17px;
+  color: #9b9b9b;
+
+}
+
+.formField:focus {
+  padding-bottom: 6px;
+  
+  border-width: 3px;
+  border-image: linear-gradient(to right, #116399, #38caef);
+  border-image-slice: 1;
+}
+
+.formField:focus ~ .formLabel {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #38caef;
+  font-weight: 600;
+}
+
+.formField:required, .formField:invalid {
+  box-shadow: none;
+}
 .suggestion {
   position: absolute;
-  top: 7px;
-  left: 10.5px;
+  top: 24px;
+  left: 1px;
   color: #afafaf;
-  pointer-events: none;
   letter-spacing: 2px;
   font-size: 20px;
 }
@@ -58,19 +86,20 @@ input:focus {
   margin-top: 30px;
   padding: 30px;
   height: 200px;
-  background-color: #d7d5ff;
+  background-color: #e7e6ff;
   text-align: center;
   border: 1px solid #75b8fe;
   border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
+  box-shadow: rgba(43, 43, 43, 0.2) 0px 8px 24px;
 }
 .coordinates p {
   margin: 20px 0;
   margin-right: 10px;
 }
 .coordinates span {  
-  color: #0b15cc;
+  color: #116399;
   padding: 5px 10px;
  
 }
@@ -91,7 +120,7 @@ input:focus {
     padding: 0 20px;
   }
   .suggestion{
-    left: 30px;
+    left: 21px;
   }
   .coordinates {
     width: auto;
@@ -99,3 +128,5 @@ input:focus {
   }
   
 }
+
+
