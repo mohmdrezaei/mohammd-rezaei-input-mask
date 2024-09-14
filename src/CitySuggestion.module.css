@@ -69,9 +69,18 @@ input:focus {
   margin: 20px 0;
   margin-right: 10px;
 }
-.coordinates span {
-     
+.coordinates span {  
   color: #0b15cc;
   padding: 5px 10px;
-  margin: 30px;
+ 
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  color: #ff0000;
 }

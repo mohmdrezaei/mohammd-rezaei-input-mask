@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CitySuggestion.module.css";
 import cities from "./cities.json";
+import { ThreeDots } from "react-loader-spinner";
 
 const BASE_URL = "https://api.opencagedata.com/geocode/v1";
 const API_KEY = "ef0a7cf762804bb38d6486f1cc231a5a";
@@ -9,7 +10,9 @@ function CitySuggesstion() {
   const [suggestion, setSuggestion] = useState("");
   const [enterPressed, setEnterPressed] = useState(false);
   const [coordinates, setCoordinates] = useState(null);
-
+  const [isLoading , setIsLoading] =useState(false)
+  const [error , setError] = useState(null)
+ 
   useEffect(() => {
     if (
       inputValue &&
@@ -36,10 +39,12 @@ function CitySuggesstion() {
     if (e.key === "Enter" && suggestion) {
       setInputValue(suggestion);
       setEnterPressed(true);
+      setIsLoading(true);
     } else if (e.key === "Backspace") {
       setInputValue("");
       setSuggestion("");
       setCoordinates(null);
+      setError(null);
     }
   };
 
@@ -56,6 +61,9 @@ function CitySuggesstion() {
     } catch (error) {
       console.error("Error fetching coordinates:", error);
       setCoordinates(null);
+      setError(error.message);
+    } finally{
+      setIsLoading(false);
     }
   };
 
@@ -77,16 +85,24 @@ function CitySuggesstion() {
           </div>
         )}
       </div>
-      
-        <div className={styles.coordinates}>
+
+      <div className={styles.coordinates}>
+        <h4>Geographic coordinates</h4>
+        {isLoading && (
+          <ThreeDots color="#4f56e7" wrapperClass={styles.flex}   width={60} height={60}/>
+        )}
+         {error && <p className={styles.error}>{error}</p>}
         {coordinates && (
           <>
-          <p>Latitude <span>{coordinates.lat}</span> </p>
-          <p>Longitude<span>{coordinates.lng}</span></p>
+            <p>
+              Latitude <span>{coordinates.lat}</span>{" "}
+            </p>
+            <p>
+              Longitude<span>{coordinates.lng}</span>
+            </p>
           </>
-         )}
-        </div>
-      
+        )}
+      </div>
     </div>
   );
 }
