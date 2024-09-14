@@ -1,9 +1,7 @@
-import React from 'react'
-import CitySuggesstion from './CitySuggesstion'
-
+import CitySuggesstion from "./components/CitySuggesstion";
 
 function App() {
-  return <CitySuggesstion/>
+  return <CitySuggesstion />;
 }
 
-export default App
+export default App;
