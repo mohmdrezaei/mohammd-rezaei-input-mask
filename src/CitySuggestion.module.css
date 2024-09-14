@@ -6,14 +6,14 @@
   position: relative;
   width: 400px;
   margin: auto;
-  margin-top: 300px;
+  margin-top: 200px;
 }
 
 input {
   position: relative;
   padding: 10px;
   font-size: 20px;
-  width: 400px;
+  width: 100%;
   position: relative;
   z-index: 1;
   border: none;
@@ -83,4 +83,19 @@ input:focus {
 
 .error {
   color: #ff0000;
+}
+
+@media (max-width : 568px) {
+  .container {
+    width: auto;
+    padding: 0 20px;
+  }
+  .suggestion{
+    left: 30px;
+  }
+  .coordinates {
+    width: auto;
+    margin: 30px 20px;
+  }
+  
 }
