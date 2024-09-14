@@ -80,7 +80,7 @@ function CitySuggesstion() {
             onKeyDown={handleKeyDown}
           />
           <label for="name" className={styles.formLabel}>
-          Enter city name
+            Enter city name
           </label>
         </div>
         {suggestion && (
@@ -90,31 +90,41 @@ function CitySuggesstion() {
           </div>
         )}
       </div>
-
-      <div className={styles.coordinates}>
-        <h4>Geographic coordinates</h4>
-        {isLoading && (
-          <ThreeDots
-            color="#38caef"
-            wrapperClass={styles.flex}
-            width={60}
-            height={60}
-          />
-        )}
-        {error && <p className={styles.error}>{error}</p>}
-        {coordinates && (
-          <>
-            <p>
-              Latitude <span>{coordinates.lat}</span>{" "}
-            </p>
-            <p>
-              Longitude<span>{coordinates.lng}</span>
-            </p>
-          </>
-        )}
-      </div>
+      <GeographicCoordinates
+        isLoading={isLoading}
+        error={error}
+        coordinates={coordinates}
+      />
     </div>
   );
 }
 
 export default CitySuggesstion;
+
+
+const GeographicCoordinates = ({ isLoading, error, coordinates }) => {
+  return (
+    <div className={styles.coordinates}>
+      <h4>Geographic coordinates</h4>
+      {isLoading && (
+        <ThreeDots
+          color="#38caef"
+          wrapperClass={styles.flex}
+          width={60}
+          height={60}
+        />
+      )}
+      {error && <p className={styles.error}>{error}</p>}
+      {coordinates && (
+        <>
+          <p>
+            Latitude <span>{coordinates.lat}</span>{" "}
+          </p>
+          <p>
+            Longitude<span>{coordinates.lng}</span>
+          </p>
+        </>
+      )}
+    </div>
+  );
+};
