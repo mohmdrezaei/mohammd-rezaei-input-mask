@@ -76,7 +76,7 @@ function CitySuggesstion() {
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
-          <label for="name" className={styles.formLabel}>
+          <label htmlFor="name" className={styles.formLabel}>
             Enter city name
           </label>
         </div>
